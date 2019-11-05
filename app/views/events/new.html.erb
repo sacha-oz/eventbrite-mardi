@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <body id ="festival">
+
+    <div class="container">
+      <%= flash_messages %> <!-- voir applicaiton helper-->
+      <%= yield %>
+    </div>
+
+    <section>
+    </br>
+      <div class="container bg-white">
+      </br>
+      <h1 class="display-4 text-primary mt-5 d-flex justify-content-center">Créer ton évènement</h1>
+      <div class="container d-flex justify-content-center ">
+        <div class="col-md-8 order-md-1">
+           
+            <%= form_tag url_for(action: 'create'), method: "post" do %>
+              <input type="hidden" name="authenticity_token" value= <%= form_authenticity_token %> >
+              <br /> 
+
+              <div class="mb-3">
+                <%= label_tag "Titre de l'évènement" %> </br>
+                <%= text_field_tag 'event_title', "", class: "form-control", placeholder: "Titre"%> 
+                <div class="invalid-feedback" style="width: 100%;"> Title is required.</div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <%= label_tag 'Le jour'%> </br>
+                  <%= text_field_tag 'event_start_date', "", class: "form-control", placeholder: "2020-01-20 00:00:00"  %>
+                  <div class="invalid-feedback"> Please enter a date. </div>
+                </div>
+                <br /> 
+                <div class="col">
+                  <%= label_tag 'La durée ' %><span class="text-muted">(en minutes //par 5)</span> </br>
+                  <%= text_field_tag 'event_duration', "", class: "form-control"%>
+                  <div class="invalid-feedback"> Please enter a duration. </div>
+                </div>
+                <div class="col">
+                  <%= label_tag 'Le prix ' %> <span class="text-muted">(en euros entier)</span> </br>
+                  <%= text_field_tag 'event_price', "", class: "form-control"%>
+                  <div class="invalid-feedback"> Please enter a price. </div>
+                </div>
+              </div>
+              </br>
+              <div class="mb-3">
+                <%= label_tag "Le lieu" %> </br>
+                <%= text_field_tag 'event_location', "", class: "form-control", placeholder: "Paris"%> 
+                <div class="invalid-feedback"> Please enter an adress. </div>
+              </div>
+
+              <hr class="mb-4">
+              <div class="mb-3">
+                <%= label_tag "Description de l'évènement " %><span class="text-muted">(au moins 10 characters)</span> </br>
+                <%= text_area_tag 'event_description', "", class: "form-control"%> 
+                <div class="invalid-feedback" style="width: 100%;"> Title is required.</div>
+              </div>
+
+              <%= submit_tag "Valider", class: 'btn btn-primary btn-lg btn-block'  %>
+              </br>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

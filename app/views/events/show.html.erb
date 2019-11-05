@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <header>
+    <div class="jumbotron" >
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+          <div class="col-lg-12">
+            <h1 class="display-4 text-primary mt-5 mb-2">Bienvenue pour l'évenement : <%= @event.title %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <body>
+  <section class="text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+            <h3>Quand</h3>
+            <p class="lead mb-0"> le <%= @event.start_date.to_date %></p>
+        </div>
+        <div class="col-lg-4">
+            <h3>Temps</h3>
+            <p class="lead mb-0"><%= @event.duration %> minutes</p>
+        </div>
+        <div class="col-lg-4">
+            <h3>Avec qui</h3>
+            <p class="lead mb-0"><%= @event.attendances.to_a.size %> participants</p>
+        </div>
+      </div>
+    </div>
+    </br> </br> </br>
+    <div class="btn btn-primary btn-lg btn-block mr-3"> <%= link_to "Participer(ne marche pas)", "#", :class => "text-white" %></div>
+  </section>
+  </body>
+</html>
